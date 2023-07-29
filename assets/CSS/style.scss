@@ -10,7 +10,23 @@
     --bgHoverColor : #e0dede;
     --shadow : 0 1px 2px rgba(0, 0, 0, 0.2);
     --borderColor : #ced0d4;
+    --postDesColor : #65676B;
+    --transition : all .3s ease-in-out;
+    
+    transition: var(--transition);
 }
+
+.dark{
+    --bodyBgColor :#18191a;
+    --headerBgColor : #242526;
+    --textColor : #E4E6EB;
+    --bgWhiteColor : #242526;
+    --borderColor : rgba(206, 208, 212, .080);
+    --bgHoverColor : #3a3b3c;
+    --postDesColor : #E4E6EB;;
+    transition: var(--transition);
+}
+
 *{
     font-family: 'Poppins', sans-serif;
 }
@@ -96,6 +112,8 @@ body{
                             padding: 12px 42px;
                             background-color: transparent;
                             border-radius: 8px;
+                            position: relative;
+                            z-index: 1;
                             img{
                                 width: 30px;
                                 height: 30px;
@@ -159,9 +177,142 @@ body{
                                 box-sizing: border-box;
                                 padding: 0;
                                 overflow: hidden;
+                                cursor: pointer;
 
                                 img{
                                     width: 100%;
+                                }
+                            }
+
+                            & .fb_tools{
+                                position: absolute;
+                                right: 0;
+                                top: 102%;
+                                transform: translateX(380px);
+                                transition: var(--transition);
+                                opacity: 0;
+                                visibility: hidden;
+                                transition-delay: .2s;
+
+                                &.active{
+                                    transform: none;
+                                    opacity: 1;
+                                    visibility: visible;
+                                    transition: var(--transition);
+                                }
+                                .fb_tools_items{
+                                    ul{
+                                        display: flex;
+                                        flex-direction: column;
+                                        background-color: var(--bgWhiteColor);
+                                        border-radius: 8px;
+                                        box-shadow: var(--shadow);
+                                        width: 340px;
+                                        padding: 10px 15px;
+
+                                        li{
+                                            width: 100%;
+                                            border-radius: 8px;
+                                            padding: 10px 15px;
+                                            transition: var(--transition);
+                                            cursor: pointer;
+                                            color: var(--textColor);
+                                            display: flex;
+                                            justify-content: space-between;
+
+                                            .content{
+                                                i{
+                                                    width: 20px;
+                                                    height: 20px;
+                                                    background-repeat: no-repeat;
+                                                    display: block;
+                                                    background-size: auto;
+                                                    // border-radius: 50%;
+                                                }
+                                            }
+
+                                            img{
+                                                width: 30px;
+                                                height: 30px;
+                                                background-color: transparent;
+                                                padding: 5px;
+                                                display: inline-block;
+                                                border-radius: 50%;
+                                                opacity: 0;
+                                                transition: var(--transition);
+
+                                                &:hover, &:focus{
+                                                    background-color: #fff;
+                                                }
+                                            }
+                                            
+                                            &:hover{
+                                                background-color: var(--bgHoverColor);
+                                                transition: var(--transition);
+
+                                                img{
+                                                    opacity: 1;
+                                                    transition: var(--transition);
+                                                }
+                                            }
+
+                                            & .fb_more_tools{
+                                                position: absolute;
+                                                top: 0;
+                                                left: 0;
+                                                transform: translateX(380px);
+                                                opacity: 0;
+                                                visibility: hidden;
+                                                transition: var(--transition);
+
+                                                &.active{
+                                                    transform: none;
+                                                    opacity: 1;
+                                                    visibility: visible;
+                                                    transition: var(--transition);
+                                                }
+
+                                                ul{
+                                                    li{
+                                                        display: block;
+                                                        .content{
+                                                            display: flex;
+                                                            gap: 0 8px;
+                                                            .content_info{
+                                                                width: calc(100% - 20px);
+                                                                .actions_button{
+                                                                    display: flex;
+                                                                    align-items: center;
+                                                                    justify-content: space-between;
+                                                                    gap: 0 8px;
+                                                                    margin-top: 3px;
+
+                                                                    button{
+                                                                        border-radius: 8px;
+                                                                        border: none;
+                                                                        outline: none;
+                                                                        width: 100%;
+                                                                        padding: 6px;
+                                                                        transition: var(--transition);
+                                                                        background-color: var(--bodyBgColor);
+                                                                        display:  block !important;
+                                                                        color: var(--textColor);
+
+                                                                        &.active{
+                                                                            background-color: #0571ed;
+                                                                            color: #fff;
+                                                                            transition: var(--transition);
+                                                                        }
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -198,6 +349,7 @@ body{
                                 padding: 10px;
                                 border-radius: 8px;
                                 background-color: transparent;
+                                color: var(--textColor);
 
                                 &:hover{
                                     background-color: var(--bgHoverColor);
@@ -333,9 +485,13 @@ body{
                             border-radius: 8px;
                             padding: 12px 0;
                             position: relative;
+                            transition: var(--transition);
+                            color: var(--textColor);
 
                             &:hover{
                                 background-color: var(--bgHoverColor);
+                                color: var(--hoverColor);
+                                transition: var(--transition);
                             }
 
                             &.active{
@@ -366,7 +522,7 @@ body{
                                 .swiper-button-next, .swiper-button-prev{
                                     opacity: .5;
                                     visibility: visible;
-                                    transition: all .3s ease-in-out;
+                                    transition: var(--transition);
                                 }
                             }
                             ul{
@@ -489,7 +645,7 @@ body{
                                 border-radius: 50%;
                                 opacity: 0;
                                 visibility: hidden;
-                                transition: all .3s ease-in-out;
+                                transition: var(--transition);
 
                                 &:hover{
                                     opacity: 1;
@@ -513,7 +669,7 @@ body{
                                         a{
                                             img{
                                                 transform: scale(1.03);
-                                                transition: all .3s ease-in-out;
+                                                transition: var(--transition);
                                             }
                                         }
                                     }
@@ -528,7 +684,7 @@ body{
                                             object-fit: cover;
                                             position: absolute;
                                             transform: scale(1);
-                                            transition: all .3s ease-in-out;
+                                            transition: var(--transition);
                                         }
                                         p{
                                             position: absolute;
@@ -567,6 +723,7 @@ body{
 
                         }
                         button.whats_your_mind_button{
+                            background-color: var(--bodyBgColor);
                             width: calc(100% - 45px);
                             text-align: left;
                             border: none;
@@ -596,7 +753,7 @@ body{
                                     width: 100%;
                                     border-radius: 8px;
                                     padding: 10px 0;
-                                    transition: all .3s ease-in-out;
+                                    transition: var(--transition);
 
                                     &:hover{
                                         background-color: var(--bgHoverColor);
@@ -657,12 +814,14 @@ body{
                                         font-size: 13px;
                                         font-weight: 400;
                                         gap: 10px;
+                                        color: var(--textColor);
+
                                         &::before{
                                             content: "";
                                             position: absolute;
                                             width: 2px;
                                             height: 2px;
-                                            background-color: black;
+                                            background-color: var(--bodyBgColor);
                                             right: 16px;
                                             top: 0;
                                             bottom: 0;
@@ -693,7 +852,7 @@ body{
                                         border-radius: 50%;
                                         background-color: transparent;
                                         padding: 5px;
-                                        transition: all .3s ease-in-out;
+                                        transition: var(--transition);
 
                                         &::after{
                                             display: none;
@@ -705,12 +864,7 @@ body{
 
                                         &:hover{
                                             background-color: var(--bgHoverColor);
-                                            transition: all .3s ease-in-out;
-                                        }
-                                    }
-                                    ul{
-                                        li{
-                                            a{}
+                                            transition: var(--transition);
                                         }
                                     }
                                 }
@@ -724,7 +878,7 @@ body{
                                     justify-content: center;
                                     padding: 5px;
                                     cursor: pointer;
-                                    transition: all .3s ease-in-out;
+                                    transition: var(--transition);
 
                                     &:hover{
                                         background-color: var(--bgHoverColor);
@@ -740,7 +894,7 @@ body{
                                 p{
                                     margin-bottom: 5px;
                                     font-size: 14px;
-                                    color:#65676B;
+                                    color:var(--postDesColor);
                                     font-weight: 400;
                                     letter-spacing: .3px;
                                 }
@@ -766,6 +920,7 @@ body{
 
                                 div{
                                     width: 100%;
+                                    color: var(--textColor);
                                 }
                                 .like{
                                     display: flex;align-items: center;
@@ -794,7 +949,7 @@ body{
                                 gap: 0 5px;
                                 li{
                                     width: 100%;
-                                    transition: all .3s ease-in-out;
+                                    transition: var(--transition);
                                     display: flex;
                                     align-items: center;
                                     justify-content: center;
@@ -804,7 +959,7 @@ body{
 
                                     &:hover{
                                         background-color: var(--bgHoverColor);
-                                        transition: all .3s ease-in-out;
+                                        transition: var(--transition);
                                     }
                                     
                                     div{
@@ -812,6 +967,7 @@ body{
                                         display: flex;
                                         align-items: center;
                                         gap: 0 5px;
+                                        color: var(--textColor);
                                     }
                                 }
                             }
@@ -898,7 +1054,8 @@ body{
 
                                             .matual_info_image{
                                                 display: flex;
-                                                flex-direction: row-reverse;
+                                                flex-direction: row;
+                                                
                                                 img{
                                                     width: 20px;
                                                     height: 20px;
@@ -1108,66 +1265,70 @@ body{
 }
 // All modal css from here....
 #createPost{
-    .modal-header{
-        h2{
-            font-size: 22px;
-            text-align: center;
-            padding: 0;
-            margin: 0;
-        }
-        .close_modal{
-            right: 10px;
-            bottom:0; 
-            top:10px;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center; 
-            cursor: pointer;
-            background-color: #f0f2f5;
-
-            i{
-                background-position: -168px -84px;
-                height: 20px;
-                width: 20px;
-                display: block;
+    .modal-content{
+        background-color: var(--bgWhiteColor);
+        .modal-header{
+            h2{
+                font-size: 22px;
+                text-align: center;
+                padding: 0;
+                margin: 0;
+                color: var(--textColor);
             }
-        }
-    }
-    .modal-body{
-        .modal_body_header{
-            display: flex;
-            gap: 0 10px;
-            align-items: center;
-
-            .profile_image{
-                width: 45px;
-                height: 45px;
+            .close_modal{
+                right: 10px;
+                bottom:0; 
+                top:10px;
+                width: 35px;
+                height: 35px;
                 border-radius: 50%;
-                border: 1px solid var(--borderColor);
-                img{
-                    border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center; 
+                cursor: pointer;
+                background-color: #f0f2f5;
+    
+                i{
+                    background-position: -168px -84px;
+                    height: 20px;
+                    width: 20px;
+                    display: block;
                 }
             }
-            .username_info{
-                p{
-                    font-size: 16px;
-                    font-weight: 500;
-                    color: var(--textColor);
+        }
+        .modal-body{
+            .modal_body_header{
+                display: flex;
+                gap: 0 10px;
+                align-items: center;
+    
+                .profile_image{
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    border: 1px solid var(--borderColor);
+                    img{
+                        border-radius: 50%;
+                    }
                 }
-                .dropdown {
-                    button{
-                        background-color: var(--bodyBgColor);
-                        border: none;
-                        border-radius: 8px;
-                        text-transform: lowercase !important;
+                .username_info{
+                    p{
+                        font-size: 16px;
+                        font-weight: 500;
                         color: var(--textColor);
-                        font-size: 12px;
-
-                        &:focus{
-                            box-shadow: none;
+                    }
+                    .dropdown {
+                        button{
+                            background-color: var(--bodyBgColor);
+                            border: none;
+                            border-radius: 8px;
+                            text-transform: lowercase !important;
+                            color: var(--textColor);
+                            font-size: 12px;
+    
+                            &:focus{
+                                box-shadow: none;
+                            }
                         }
                     }
                 }

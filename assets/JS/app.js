@@ -151,7 +151,7 @@ const showPost = () =>{
                 </li>
             </ul>
             </div>
-        </div>`
+            </div>`
         });
     } else {
         postList = `<div class="data_not_found">
@@ -238,3 +238,64 @@ if (showAllPosts) {
         }
     }
 }
+
+// fb tools
+const header_avatar = document.querySelector(".header_avatar");
+const fb_tools = document.querySelector(".fb_tools");
+const arrow_icon = document.querySelector(".fb_tools .fb_tools_items ul li .arrow_icon");
+const fb_more_tools = document.querySelector(".fb_tools .fb_tools_items ul li .fb_more_tools");
+const close_appearance = document.querySelector(".fb_tools .fb_tools_items ul li .fb_more_tools .close_appearance");
+const actions_btn = document.querySelectorAll(".fb_tools .fb_tools_items ul li .fb_more_tools .actions_button button");
+const dark_on = document.querySelector(".fb_tools .fb_tools_items ul li .fb_more_tools .actions_button .dark_on");
+const dark_off = document.querySelector(".fb_tools .fb_tools_items ul li .fb_more_tools .actions_button .dark_off");
+const body = document.querySelector("body");
+
+if (header_avatar) {
+    header_avatar.onclick = (e) =>{
+        if (e.target.getAttribute("data-attr") == "avatar") {
+            fb_tools.classList.toggle("active");
+            fb_more_tools.classList.remove("active");
+        } else {
+            fb_tools.classList.add("active");
+        }
+        
+    }
+}
+
+if (arrow_icon) {
+    arrow_icon.onclick = () =>{
+        fb_more_tools.classList.add("active");
+    }
+}
+
+if (close_appearance) {
+    close_appearance.onclick = () =>{
+        fb_more_tools.classList.remove("active");
+    }
+}
+
+if (dark_on) {
+    dark_on.onclick = () =>{
+        body.classList.add("dark");
+        dark_on.classList.add("active");
+        dark_off.classList.remove("active");
+    }
+}
+if (dark_off) {
+    dark_off.onclick = () =>{
+        body.classList.remove("dark");
+        dark_off.classList.add("active");
+        dark_on.classList.remove("active");
+    }
+}
+
+// if (actions_btn) {
+//     actions_btn.forEach(item => {
+//         item.onclick = () =>{
+//             actions_btn.forEach(item =>{
+//                 item.classList.remove("active");
+//             })
+//             item.classList.add("active");
+//         }
+//     });
+// }

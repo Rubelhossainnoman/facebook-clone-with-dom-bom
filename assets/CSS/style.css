@@ -9,6 +9,20 @@
   --bgHoverColor: #e0dede;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   --borderColor: #ced0d4;
+  --postDesColor: #65676B;
+  --transition: all .3s ease-in-out;
+  transition: var(--transition);
+}
+
+.dark {
+  --bodyBgColor:#18191a;
+  --headerBgColor: #242526;
+  --textColor: #E4E6EB;
+  --bgWhiteColor: #242526;
+  --borderColor: rgba(206, 208, 212, .080);
+  --bgHoverColor: #3a3b3c;
+  --postDesColor: #E4E6EB;
+  transition: var(--transition);
 }
 
 * {
@@ -97,6 +111,8 @@ body {
   padding: 12px 42px;
   background-color: transparent;
   border-radius: 8px;
+  position: relative;
+  z-index: 1;
 }
 .wrapper .main_wrapper .header_section .header_middle_menu ul li a img {
   width: 30px;
@@ -150,9 +166,121 @@ body {
   box-sizing: border-box;
   padding: 0;
   overflow: hidden;
+  cursor: pointer;
 }
 .wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar a img {
   width: 100%;
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools {
+  position: absolute;
+  right: 0;
+  top: 102%;
+  transform: translateX(380px);
+  transition: var(--transition);
+  opacity: 0;
+  visibility: hidden;
+  transition-delay: 0.2s;
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools.active {
+  transform: none;
+  opacity: 1;
+  visibility: visible;
+  transition: var(--transition);
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bgWhiteColor);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  width: 340px;
+  padding: 10px 15px;
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li {
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px 15px;
+  transition: var(--transition);
+  cursor: pointer;
+  color: var(--textColor);
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li .content i {
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  display: block;
+  background-size: auto;
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li img {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  padding: 5px;
+  display: inline-block;
+  border-radius: 50%;
+  opacity: 0;
+  transition: var(--transition);
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li img:hover, .wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li img:focus {
+  background-color: #fff;
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li:hover {
+  background-color: var(--bgHoverColor);
+  transition: var(--transition);
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li:hover img {
+  opacity: 1;
+  transition: var(--transition);
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li .fb_more_tools {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(380px);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li .fb_more_tools.active {
+  transform: none;
+  opacity: 1;
+  visibility: visible;
+  transition: var(--transition);
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li .fb_more_tools ul li {
+  display: block;
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li .fb_more_tools ul li .content {
+  display: flex;
+  gap: 0 8px;
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li .fb_more_tools ul li .content .content_info {
+  width: calc(100% - 20px);
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li .fb_more_tools ul li .content .content_info .actions_button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 8px;
+  margin-top: 3px;
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li .fb_more_tools ul li .content .content_info .actions_button button {
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 6px;
+  transition: var(--transition);
+  background-color: var(--bodyBgColor);
+  display: block !important;
+  color: var(--textColor);
+}
+.wrapper .main_wrapper .header_section .header_right_menu ul li.header_avatar .fb_tools .fb_tools_items ul li .fb_more_tools ul li .content .content_info .actions_button button.active {
+  background-color: #0571ed;
+  color: #fff;
+  transition: var(--transition);
 }
 .wrapper .main_wrapper .main_body_section {
   padding-top: 70px;
@@ -185,6 +313,7 @@ body {
   padding: 10px;
   border-radius: 8px;
   background-color: transparent;
+  color: var(--textColor);
 }
 .wrapper .main_wrapper .main_body_section .body_left_part .essential_topic ul li a:hover, .wrapper .main_wrapper .main_body_section .body_left_part .short_cut_topic ul li a:hover {
   background-color: var(--bgHoverColor);
@@ -287,9 +416,13 @@ body {
   border-radius: 8px;
   padding: 12px 0;
   position: relative;
+  transition: var(--transition);
+  color: var(--textColor);
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_header div:hover {
   background-color: var(--bgHoverColor);
+  color: var(--hoverColor);
+  transition: var(--transition);
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_header div.active {
   background-color: transparent;
@@ -315,7 +448,7 @@ body {
 .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_contents .body_middle_store_content_item:hover .swiper-button-next, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_contents .body_middle_store_content_item:hover .swiper-button-prev, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_contents .body_middle_reels_content_item:hover .swiper-button-next, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_contents .body_middle_reels_content_item:hover .swiper-button-prev, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_reels_contents .body_middle_store_content_item:hover .swiper-button-next, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_reels_contents .body_middle_store_content_item:hover .swiper-button-prev, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_reels_contents .body_middle_reels_content_item:hover .swiper-button-next, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_reels_contents .body_middle_reels_content_item:hover .swiper-button-prev {
   opacity: 0.5;
   visibility: visible;
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_contents .body_middle_store_content_item ul, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_contents .body_middle_reels_content_item ul, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_reels_contents .body_middle_store_content_item ul, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_reels_contents .body_middle_reels_content_item ul {
   display: flex;
@@ -428,7 +561,7 @@ body {
   border-radius: 50%;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_contents .body_middle_store_content_item .swiper-button-next:hover, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_contents .body_middle_store_content_item .swiper-button-prev:hover, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_contents .body_middle_reels_content_item .swiper-button-next:hover, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_contents .body_middle_reels_content_item .swiper-button-prev:hover, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_reels_contents .body_middle_store_content_item .swiper-button-next:hover, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_reels_contents .body_middle_store_content_item .swiper-button-prev:hover, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_reels_contents .body_middle_reels_content_item .swiper-button-next:hover, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_reels_contents .body_middle_reels_content_item .swiper-button-prev:hover {
   opacity: 1;
@@ -444,7 +577,7 @@ body {
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_contents .body_middle_reels_content_item ul li:hover a img, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_reels_contents .body_middle_reels_content_item ul li:hover a img {
   transform: scale(1.03);
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_contents .body_middle_reels_content_item ul li::before, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_reels_contents .body_middle_reels_content_item ul li::before {
   z-index: 1;
@@ -456,7 +589,7 @@ body {
      object-fit: cover;
   position: absolute;
   transform: scale(1);
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_story_contents .body_middle_reels_content_item ul li a p, .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_story_part .body_middle_reels_contents .body_middle_reels_content_item ul li a p {
   position: absolute;
@@ -489,6 +622,7 @@ body {
   border-radius: 50%;
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_whats_your_mind_part .body_middle_whats_your_mind_part_head button.whats_your_mind_button {
+  background-color: var(--bodyBgColor);
   width: calc(100% - 45px);
   text-align: left;
   border: none;
@@ -517,7 +651,7 @@ body {
   width: 100%;
   border-radius: 8px;
   padding: 10px 0;
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .body_middle_whats_your_mind_part .body_middle_whats_your_mind_part_head_action ul li a:hover {
   background-color: var(--bgHoverColor);
@@ -572,13 +706,14 @@ body {
   font-size: 13px;
   font-weight: 400;
   gap: 10px;
+  color: var(--textColor);
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .all_fb_posts .posts_item .posts_header .user_profile_info .user_info_contents .post_time_ago::before {
   content: "";
   position: absolute;
   width: 2px;
   height: 2px;
-  background-color: black;
+  background-color: var(--bodyBgColor);
   right: 16px;
   top: 0;
   bottom: 0;
@@ -607,7 +742,7 @@ body {
   border-radius: 50%;
   background-color: transparent;
   padding: 5px;
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .all_fb_posts .posts_item .posts_header .posts_action .dropdown button::after {
   display: none;
@@ -617,7 +752,7 @@ body {
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .all_fb_posts .posts_item .posts_header .posts_action .dropdown button:hover {
   background-color: var(--bgHoverColor);
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .all_fb_posts .posts_item .posts_header .posts_action .hide_post {
   width: 35px;
@@ -629,7 +764,7 @@ body {
   justify-content: center;
   padding: 5px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .all_fb_posts .posts_item .posts_header .posts_action .hide_post:hover {
   background-color: var(--bgHoverColor);
@@ -643,7 +778,7 @@ body {
 .wrapper .main_wrapper .main_body_section .body_middle_part .all_fb_posts .posts_item .posts_contents .post_desc p {
   margin-bottom: 5px;
   font-size: 14px;
-  color: #65676B;
+  color: var(--postDesColor);
   font-weight: 400;
   letter-spacing: 0.3px;
 }
@@ -668,6 +803,7 @@ body {
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .all_fb_posts .posts_item .post_react_number .react_items div {
   width: 100%;
+  color: var(--textColor);
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .all_fb_posts .posts_item .post_react_number .react_items .like {
   display: flex;
@@ -697,7 +833,7 @@ body {
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .all_fb_posts .posts_item .post_like_comment_share ul li {
   width: 100%;
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -707,7 +843,7 @@ body {
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .all_fb_posts .posts_item .post_like_comment_share ul li:hover {
   background-color: var(--bgHoverColor);
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .all_fb_posts .posts_item .post_like_comment_share ul li div {
   width: -moz-fit-content;
@@ -715,6 +851,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0 5px;
+  color: var(--textColor);
 }
 .wrapper .main_wrapper .main_body_section .body_middle_part .all_fb_posts .data_not_found {
   background-color: var(--bgWhiteColor);
@@ -793,7 +930,7 @@ body {
 }
 .wrapper .main_wrapper .main_body_section .body_right_part .body_right_part_friend_request .friend_request_item ul li a .request_info .matual_info .matual_info_image {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 .wrapper .main_wrapper .main_body_section .body_right_part .body_right_part_friend_request .friend_request_item ul li a .request_info .matual_info .matual_info_image img {
   width: 20px;
@@ -962,13 +1099,17 @@ body {
   font-size: 16px;
 }
 
-#createPost .modal-header h2 {
+#createPost .modal-content {
+  background-color: var(--bgWhiteColor);
+}
+#createPost .modal-content .modal-header h2 {
   font-size: 22px;
   text-align: center;
   padding: 0;
   margin: 0;
+  color: var(--textColor);
 }
-#createPost .modal-header .close_modal {
+#createPost .modal-content .modal-header .close_modal {
   right: 10px;
   bottom: 0;
   top: 10px;
@@ -981,32 +1122,32 @@ body {
   cursor: pointer;
   background-color: #f0f2f5;
 }
-#createPost .modal-header .close_modal i {
+#createPost .modal-content .modal-header .close_modal i {
   background-position: -168px -84px;
   height: 20px;
   width: 20px;
   display: block;
 }
-#createPost .modal-body .modal_body_header {
+#createPost .modal-content .modal-body .modal_body_header {
   display: flex;
   gap: 0 10px;
   align-items: center;
 }
-#createPost .modal-body .modal_body_header .profile_image {
+#createPost .modal-content .modal-body .modal_body_header .profile_image {
   width: 45px;
   height: 45px;
   border-radius: 50%;
   border: 1px solid var(--borderColor);
 }
-#createPost .modal-body .modal_body_header .profile_image img {
+#createPost .modal-content .modal-body .modal_body_header .profile_image img {
   border-radius: 50%;
 }
-#createPost .modal-body .modal_body_header .username_info p {
+#createPost .modal-content .modal-body .modal_body_header .username_info p {
   font-size: 16px;
   font-weight: 500;
   color: var(--textColor);
 }
-#createPost .modal-body .modal_body_header .username_info .dropdown button {
+#createPost .modal-content .modal-body .modal_body_header .username_info .dropdown button {
   background-color: var(--bodyBgColor);
   border: none;
   border-radius: 8px;
@@ -1014,6 +1155,6 @@ body {
   color: var(--textColor);
   font-size: 12px;
 }
-#createPost .modal-body .modal_body_header .username_info .dropdown button:focus {
+#createPost .modal-content .modal-body .modal_body_header .username_info .dropdown button:focus {
   box-shadow: none;
 }/*# sourceMappingURL=style.css.map */
